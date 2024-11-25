@@ -17,7 +17,7 @@ export default function AboutMe() {
         </p>
         <p className="text-lg max-w-3xl text-left font-light leading-relaxed text-gray-600 mt-4">
           With a foundation in programming and a vision for leveraging AI to drive the future, I aim to be at the 
-          forefront of innovation. Let's shape the world, one line of code at a time.
+          forefront of innovation. Let us shape the world, one line of code at a time.
         </p>
       </section>
     );

@@ -10,7 +10,7 @@ export default function Education() {
         <div className="space-y-8">
           {/* Masters */}
           <div className="bg-white shadow-md rounded-lg p-6 border border-gray-200">
-            <h3 className="text-2xl font-semibold text-blue-600">Master's in Economics</h3>
+            <h3 className="text-2xl font-semibold text-blue-600">Masters in Economics</h3>
             <p className="text-gray-700 mt-2">University of Karachi</p>
             <p className="text-gray-500 mt-1">Specialization in Economic Analysis and Policy</p>
           </div>
