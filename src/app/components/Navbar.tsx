@@ -16,6 +16,7 @@ export default function Navbar() {
     { name: "Professional Development", href: "#professionaldev" },
     { name: "Awards", href: "#awards" },
     { name: "Skills", href: "#skills" },
+    { name: "Gallery", href: "#gallery" }, // ✅ Added Gallery Section
     { name: "Contact", href: "#contact" },
   ];
 

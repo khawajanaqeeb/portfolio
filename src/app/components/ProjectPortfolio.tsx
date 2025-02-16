@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 export default function ProjectPortfolio() {
   return (
     <section
@@ -65,7 +66,7 @@ export default function ProjectPortfolio() {
               "Converted a Figma design into responsive HTML and CSS.",
             image: "/figma.png",
             color: "bg-[#475569] border-[#22c55e]",
-            link:"https://figma-assignment-edited.vercel.app/"
+            link: "https://figma-assignment-edited.vercel.app/",
           },
           {
             title: "Todo List",
@@ -82,14 +83,18 @@ export default function ProjectPortfolio() {
             whileHover={{ scale: 1.03 }}
           >
             <a href={project.link || "#"} target="_blank" rel="noopener noreferrer">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={50}
-                height={50}
-                className="w-full h-56 object-contain rounded-md mb-4 hover:scale-105 transition-all duration-300"
-              />
-              <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+              <div className="relative w-full h-[300px]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  layout="fill"
+                  objectFit="contain" // Ensures full image visibility without cropping
+                  className="rounded-md hover:scale-105 transition-all duration-300"
+                />
+              </div>
+              <h3 className="text-2xl font-semibold text-white mt-4">
+                {project.title}
+              </h3>
               <p className="text-gray-300 mt-2">{project.description}</p>
             </a>
           </motion.div>

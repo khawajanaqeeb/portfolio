@@ -9,6 +9,7 @@ import ProjectPortfolio from "./components/ProjectPortfolio";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Awards from "./components/Awards";
+import Gallery from "@/app/components/Gallery"; // ✅ Import Gallery Component
 
 export default function Home() {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
         <ProjectPortfolio />
         <Awards />
         <Skills />
+        <Gallery />
         <Contact />
       </div>
     </div>
