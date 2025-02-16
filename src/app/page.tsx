@@ -24,7 +24,7 @@ export default function Home() {
             Welcome to My Portfolio
           </h1>
           <p className="text-lg sm:text-xl font-light text-gray-300 hover:text-gray-100 transition-all duration-300">
-            Hi, I'm <span className="font-semibold text-blue-300">Naqeeb</span>. A passionate web developer and tech enthusiast, eager to create impactful digital experiences.
+            Hi, I am <span className="font-semibold text-blue-300">Naqeeb</span>. A passionate web developer and tech enthusiast, eager to create impactful digital experiences.
           </p>
           <p className="text-base sm:text-lg text-gray-400 hover:text-gray-200 transition-all duration-300">
             Explore my journey in technology, development, and AI.

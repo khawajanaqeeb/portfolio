@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 export default function ProjectPortfolio() {
   return (
     <section
@@ -82,9 +82,11 @@ export default function ProjectPortfolio() {
             whileHover={{ scale: 1.03 }}
           >
             <a href={project.link || "#"} target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
+                width={50}
+                height={50}
                 className="w-full h-56 object-contain rounded-md mb-4 hover:scale-105 transition-all duration-300"
               />
               <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
