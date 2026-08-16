@@ -42,6 +42,7 @@ export default function Footer() {
               {[
                 { name: "Home", href: "/" },
                 { name: "About Me", href: "/about" },
+                { name: "Services", href: "/services" },
                 { name: "Education", href: "/education" },
                 { name: "Experience", href: "/experience" },
                 { name: "Projects", href: "/projects" },

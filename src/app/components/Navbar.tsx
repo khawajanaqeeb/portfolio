@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navRoutes = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
   { name: "Education", href: "/education" },
   { name: "Experience", href: "/experience" },
   { name: "Projects", href: "/projects" },
@@ -18,6 +19,7 @@ const navRoutes = [
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ];
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
