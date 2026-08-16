@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import PageTransition from "@/app/components/PageTransition";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaExpand, FaTimes, FaPlayCircle, FaImages, FaVideo } from "react-icons/fa";
+import { FaExpand, FaTimes, FaPlayCircle, FaImages, FaVideo, FaCloud } from "react-icons/fa";
+import { getGalleryPictures, getGalleryVideos, SupabaseMediaItem } from "@/lib/supabaseClient";
 
-const galleryItems = [
+const defaultGalleryItems = [
   { src: "/g1.jpeg", alt: "Pic1 - Award Ceremony", title: "Award Ceremony Event", category: "Honors" },
   { src: "/g2.jpg", alt: "Pic2 - Faculty Group", title: "Faculty Presentation", category: "Academic" },
   { src: "/g3.jpg", alt: "Pic3 - Practical Training", title: "Computer Lab Supervision", category: "Mentorship" },
@@ -18,7 +19,7 @@ const galleryItems = [
   { src: "/g11.jpeg", alt: "Pic11 - Recognition", title: "Appreciation Recognition", category: "Honors" },
 ];
 
-const videoItems = [
+const defaultVideoItems = [
   {
     src: "/v1.mp4",
     title: "All Sindh Teachers Appreciation Award Ceremony 2021",
@@ -35,16 +36,57 @@ const videoItems = [
 
 export default function GalleryPage() {
   const [activeTab, setActiveTab] = useState<"pictures" | "videos">("pictures");
-  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+  const [galleryItems, setGalleryItems] = useState(defaultGalleryItems);
+  const [videoItems, setVideoItems] = useState(defaultVideoItems);
+  const [isSupabaseConnected, setIsSupabaseConnected] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<typeof defaultGalleryItems[0] | null>(null);
+
+  useEffect(() => {
+    async function loadSupabaseMedia() {
+      const dbPictures = await getGalleryPictures();
+      const dbVideos = await getGalleryVideos();
+
+      if (dbPictures.length > 0) {
+        setIsSupabaseConnected(true);
+        const mappedPics = dbPictures.map((item: SupabaseMediaItem) => ({
+          src: item.url,
+          alt: item.title,
+          title: item.title,
+          category: "Supabase Cloud",
+        }));
+        setGalleryItems([...mappedPics, ...defaultGalleryItems]);
+      }
+
+      if (dbVideos.length > 0) {
+        setIsSupabaseConnected(true);
+        const mappedVids = dbVideos.map((item: SupabaseMediaItem) => ({
+          src: item.url,
+          title: item.title,
+          subtitle: "Streamed from Supabase CDN",
+          badge: "Supabase HD Video",
+        }));
+        setVideoItems([...mappedVids, ...defaultVideoItems]);
+      }
+    }
+
+    loadSupabaseMedia();
+  }, []);
 
   return (
     <PageTransition>
       <div className="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block">
-            Visual Portfolio
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-bold uppercase tracking-widest text-cyan-400">
+            {isSupabaseConnected ? (
+              <span className="flex items-center gap-1.5 text-emerald-400">
+                <FaCloud className="text-sm" /> Connected to Supabase Cloud CDN
+              </span>
+            ) : (
+              <span>Visual Portfolio &amp; Media Hub</span>
+            )}
+          </div>
+
           <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-white">
             Media <span className="text-gradient-cyan">Gallery</span>
           </h1>

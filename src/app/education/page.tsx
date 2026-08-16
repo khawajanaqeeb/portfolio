@@ -1,45 +1,67 @@
 import { Metadata } from "next";
 import PageTransition from "@/app/components/PageTransition";
-import { FaGraduationCap, FaUniversity, FaBook, FaSchool } from "react-icons/fa";
+import { FaGraduationCap, FaUniversity, FaBook, FaSchool, FaCalculator, FaServer } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Education | Khawaja Naqeeb Uddin",
-  description: "Academic background and degrees of Khawaja Naqeeb Uddin.",
+  description: "Academic qualifications of Khawaja Naqeeb Uddin: Master's in Economics (Karachi University), CMA Professional I (ICMA Pakistan), MCSE (Microsoft), and B.Com.",
 };
 
 export default function EducationPage() {
   const educations = [
     {
-      title: "Masters in Economics",
-      institution: "University of Karachi",
-      description: "Specialization in Economic Analysis and Policy",
+      title: "Master's Degree in Economics",
+      institution: "Karachi University",
+      period: "2000 - 2002",
+      description: "Specialization in Economic Analysis, Policy Formulation, and Fiscal Theory.",
       icon: <FaUniversity className="text-cyan-400 text-xl" />,
-      tag: "Postgraduate Degree",
+      tag: "Postgraduate Master's Degree",
       accent: "border-cyan-500/40",
     },
     {
-      title: "Graduation in Commerce",
-      institution: "University of Karachi",
-      description: "Focused on Business and Financial Principles",
-      icon: <FaGraduationCap className="text-indigo-400 text-xl" />,
-      tag: "Bachelor Degree",
+      title: "MCSE - System, Networking & LAN/WAN Management",
+      institution: "Microsoft",
+      period: "1997 - 1998",
+      description: "Systems Engineering, Network Architecture, Active Directory, and LAN/WAN Infrastructure Management.",
+      icon: <FaServer className="text-indigo-400 text-xl" />,
+      tag: "Systems Engineering Certification",
       accent: "border-indigo-500/40",
     },
     {
-      title: "Intermediate in Science",
-      institution: "Karachi",
-      description: "Pre-Engineering",
-      icon: <FaBook className="text-purple-400 text-xl" />,
-      tag: "Higher Secondary",
+      title: "CMA Professional I",
+      institution: "Institute of Cost and Management Accountants of Pakistan (ICMA Pakistan)",
+      period: "1996 - 1997",
+      description: "Accounting and Related Financial Services, Cost Management, and Auditing Principles.",
+      icon: <FaCalculator className="text-purple-400 text-xl" />,
+      tag: "Professional Accounting Certification",
       accent: "border-purple-500/40",
+    },
+    {
+      title: "Graduation in Commerce (B.Com)",
+      institution: "University of Karachi",
+      period: "Bachelor Degree",
+      description: "Focused on Business Administration, Accounting, Finance, and Commercial Law.",
+      icon: <FaGraduationCap className="text-emerald-400 text-xl" />,
+      tag: "Bachelor Degree",
+      accent: "border-emerald-500/40",
+    },
+    {
+      title: "Intermediate in Science (Pre-Engineering)",
+      institution: "Karachi",
+      period: "Higher Secondary",
+      description: "Pre-Engineering Discipline focusing on Advanced Mathematics, Physics, and Chemistry.",
+      icon: <FaBook className="text-amber-400 text-xl" />,
+      tag: "Higher Secondary Certificate",
+      accent: "border-amber-500/40",
     },
     {
       title: "Matriculation in Science",
       institution: "Karachi Board",
-      description: "Majors: Maths, Chemistry, Physics",
-      icon: <FaSchool className="text-emerald-400 text-xl" />,
-      tag: "Secondary School",
-      accent: "border-emerald-500/40",
+      period: "Secondary Certificate",
+      description: "Majors in Mathematics, Chemistry, and Physics.",
+      icon: <FaSchool className="text-teal-400 text-xl" />,
+      tag: "Secondary School Certificate",
+      accent: "border-teal-500/40",
     },
   ];
 
@@ -49,13 +71,13 @@ export default function EducationPage() {
         {/* Header */}
         <div className="text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block">
-            Academic Qualifications
+            Academic &amp; Professional Qualifications
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-white">
             Educational <span className="text-gradient-cyan">Background</span>
           </h1>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            My academic journey has shaped my understanding of diverse subjects and has provided me with a solid foundation for growth.
+            A rich academic journey encompassing a Master&apos;s Degree in Economics from Karachi University, CMA Professional I from ICMA Pakistan, Microsoft MCSE Systems Engineering, and B.Com.
           </p>
         </div>
 
@@ -74,9 +96,12 @@ export default function EducationPage() {
                   <span className="text-xs font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-cyan-300">
                     {edu.tag}
                   </span>
-                  <span className="text-sm font-semibold text-slate-400">
-                    {edu.institution}
-                  </span>
+                  <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-400">
+                    <span>{edu.institution}</span>
+                    <span className="font-mono text-cyan-400 bg-slate-900 px-2.5 py-0.5 rounded-full border border-slate-800">
+                      {edu.period}
+                    </span>
+                  </div>
                 </div>
 
                 <h2 className="text-2xl font-bold text-white font-heading group-hover:text-cyan-400 transition-colors">
