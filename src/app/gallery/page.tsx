@@ -6,28 +6,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaExpand, FaTimes, FaPlayCircle, FaImages, FaVideo, FaCloud } from "react-icons/fa";
 import { getGalleryPictures, getGalleryVideos, SupabaseMediaItem } from "@/lib/supabaseClient";
 
+const cdnBase = "https://egpdxaviimyirpbafgpt.supabase.co/storage/v1/object/public/gallery";
+
 const defaultGalleryItems = [
-  { src: "/g1.jpeg", alt: "Pic1 - Award Ceremony", title: "Award Ceremony Event", category: "Honors" },
-  { src: "/g2.jpg", alt: "Pic2 - Faculty Group", title: "Faculty Presentation", category: "Academic" },
-  { src: "/g3.jpg", alt: "Pic3 - Practical Training", title: "Computer Lab Supervision", category: "Mentorship" },
-  { src: "/g4.jpg", alt: "Pic4 - Teacher Honor", title: "Best Teacher Award Presentation", category: "Honors" },
-  { src: "/g6.jpeg", alt: "Pic6 - GIAIC Classroom", title: "GIAIC AI Session", category: "AI & Tech" },
-  { src: "/g7.jpeg", alt: "Pic7 - Mentorship Workshop", title: "Student Web Workshop", category: "Mentorship" },
-  { src: "/g8.jpeg", alt: "Pic8 - Tech Certification", title: "Certification Ceremony", category: "Honors" },
-  { src: "/g9.jpeg", alt: "Pic9 - Training Session", title: "Technical Seminar", category: "Academic" },
-  { src: "/g10.jpeg", alt: "Pic10 - Campus Milestone", title: "Faculty Milestone", category: "Academic" },
-  { src: "/g11.jpeg", alt: "Pic11 - Recognition", title: "Appreciation Recognition", category: "Honors" },
+  { src: `${cdnBase}/g1.jpeg`, alt: "Pic1 - Award Ceremony", title: "Award Ceremony Event", category: "Honors" },
+  { src: `${cdnBase}/g2.jpg`, alt: "Pic2 - Faculty Group", title: "Faculty Presentation", category: "Academic" },
+  { src: `${cdnBase}/g3.jpg`, alt: "Pic3 - Practical Training", title: "Computer Lab Supervision", category: "Mentorship" },
+  { src: `${cdnBase}/g4.jpg`, alt: "Pic4 - Teacher Honor", title: "Best Teacher Award Presentation", category: "Honors" },
+  { src: `${cdnBase}/g6.jpeg`, alt: "Pic6 - GIAIC Classroom", title: "GIAIC AI Session", category: "AI & Tech" },
+  { src: `${cdnBase}/g7.jpeg`, alt: "Pic7 - Mentorship Workshop", title: "Student Web Workshop", category: "Mentorship" },
+  { src: `${cdnBase}/g8.jpeg`, alt: "Pic8 - Tech Certification", title: "Certification Ceremony", category: "Honors" },
+  { src: `${cdnBase}/g9.jpeg`, alt: "Pic9 - Training Session", title: "Technical Seminar", category: "Academic" },
+  { src: `${cdnBase}/g10.jpeg`, alt: "Pic10 - Campus Milestone", title: "Faculty Milestone", category: "Academic" },
+  { src: `${cdnBase}/g11.jpeg`, alt: "Pic11 - Recognition", title: "Appreciation Recognition", category: "Honors" },
 ];
 
 const defaultVideoItems = [
   {
-    src: "/v1.mp4",
+    src: `${cdnBase}/v1.mp4`,
     title: "All Sindh Teachers Appreciation Award Ceremony 2021",
     subtitle: "Receiving the Best Mathematics & Computer Teacher Award",
     badge: "Award Ceremony Video",
   },
   {
-    src: "/v2.mp4",
+    src: `${cdnBase}/v2.mp4`,
     title: "E-Commerce & Dynamic Application Demonstration",
     subtitle: "Interactive walkthrough showcasing Next.js and full-stack features",
     badge: "Project Feature Reel",
@@ -38,7 +40,7 @@ export default function GalleryPage() {
   const [activeTab, setActiveTab] = useState<"pictures" | "videos">("pictures");
   const [galleryItems, setGalleryItems] = useState(defaultGalleryItems);
   const [videoItems, setVideoItems] = useState(defaultVideoItems);
-  const [isSupabaseConnected, setIsSupabaseConnected] = useState(false);
+  const [isSupabaseConnected, setIsSupabaseConnected] = useState(true);
   const [selectedImage, setSelectedImage] = useState<typeof defaultGalleryItems[0] | null>(null);
 
   useEffect(() => {
@@ -52,9 +54,9 @@ export default function GalleryPage() {
           src: item.url,
           alt: item.title,
           title: item.title,
-          category: "Supabase Cloud",
+          category: item.category || "Supabase Cloud",
         }));
-        setGalleryItems([...mappedPics, ...defaultGalleryItems]);
+        setGalleryItems(mappedPics);
       }
 
       if (dbVideos.length > 0) {
@@ -62,10 +64,10 @@ export default function GalleryPage() {
         const mappedVids = dbVideos.map((item: SupabaseMediaItem) => ({
           src: item.url,
           title: item.title,
-          subtitle: "Streamed from Supabase CDN",
+          subtitle: "Streamed via Supabase Global CDN",
           badge: "Supabase HD Video",
         }));
-        setVideoItems([...mappedVids, ...defaultVideoItems]);
+        setVideoItems(mappedVids);
       }
     }
 
@@ -80,7 +82,7 @@ export default function GalleryPage() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-bold uppercase tracking-widest text-cyan-400">
             {isSupabaseConnected ? (
               <span className="flex items-center gap-1.5 text-emerald-400">
-                <FaCloud className="text-sm" /> Connected to Supabase Cloud CDN
+                <FaCloud className="text-sm" /> Streamed via Supabase Cloud CDN
               </span>
             ) : (
               <span>Visual Portfolio &amp; Media Hub</span>
@@ -91,7 +93,7 @@ export default function GalleryPage() {
             Media <span className="text-gradient-cyan">Gallery</span>
           </h1>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Switch between pictures and high-definition video demonstrations of events, awards, and software projects.
+            Switch between pictures and high-definition video demonstrations powered by Supabase Cloud CDN.
           </p>
         </div>
 
@@ -153,6 +155,7 @@ export default function GalleryPage() {
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-contain group-hover:scale-105 transition-transform duration-500"
+                        unoptimized
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
                         <span className="self-end text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-800 text-cyan-400">
@@ -250,6 +253,7 @@ export default function GalleryPage() {
                     fill
                     sizes="100vw"
                     className="object-contain rounded-2xl"
+                    unoptimized
                   />
                 </div>
                 <div className="mt-4 text-center">
