@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaHeart } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 
@@ -12,53 +12,58 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <Link
-              href="#home"
-              className="flex items-center gap-2 group text-2xl font-extrabold tracking-tight"
+              href="/"
+              className="flex items-center gap-2.5 group text-2xl font-extrabold tracking-tight"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-cyan-500/20">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-cyan-500/20">
                 KN
               </div>
-              <span className="text-white group-hover:text-cyan-400 transition-colors font-outfit">
-                Naqeeb<span className="text-cyan-400">.dev</span>
+              <span className="text-white group-hover:text-cyan-400 transition-colors font-heading">
+                Khawaja Naqeeb
               </span>
             </Link>
             <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
-              Full Stack Web Developer & AI Specialist crafting digital experiences with Next.js, React, TypeScript, and modern web tech.
+              Full Stack Web Developer, AI & Cloud Specialist (GIAIC), and Head of Computer Faculty dedicated to engineering scalable web architectures.
             </p>
+
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400">
+              <FaCircle className="text-[8px] animate-pulse" />
+              <span>Available for Hire & Remote Projects</span>
+            </div>
           </div>
 
           {/* Quick Navigation Links */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-outfit">
-              Quick Navigation
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-heading">
+              Page Routes
             </h4>
-            <div className="grid grid-cols-2 gap-2 text-sm">
+            <div className="grid grid-cols-2 gap-2.5 text-sm">
               {[
-                { name: "Home", href: "#home" },
-                { name: "About Me", href: "#aboutme" },
-                { name: "Education", href: "#education" },
-                { name: "Experience", href: "#experience" },
-                { name: "Projects", href: "#projectportfolio" },
-                { name: "Certifications", href: "#professionaldev" },
-                { name: "Awards", href: "#awards" },
-                { name: "Skills", href: "#skills" },
-                { name: "Gallery", href: "#gallery" },
-                { name: "Contact", href: "#contact" },
+                { name: "Home", href: "/" },
+                { name: "About Me", href: "/about" },
+                { name: "Education", href: "/education" },
+                { name: "Experience", href: "/experience" },
+                { name: "Projects", href: "/projects" },
+                { name: "Skills Matrix", href: "/skills" },
+                { name: "Certifications", href: "/professional-dev" },
+                { name: "Awards", href: "/awards" },
+                { name: "Media Gallery", href: "/gallery" },
+                { name: "Contact Hub", href: "/contact" },
               ].map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   className="hover:text-cyan-400 transition-colors text-slate-400"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Social Profiles */}
+          {/* Social Profiles & Contact Callout */}
           <div className="md:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-outfit">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-heading">
               Connect With Me
             </h4>
             <div className="flex flex-wrap gap-3">
@@ -97,6 +102,15 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
+
+            <div className="pt-2">
+              <Link
+                href="/contact"
+                className="inline-block text-xs font-semibold text-cyan-400 hover:underline"
+              >
+                Send a message directly &rarr;
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -104,11 +118,12 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Khawaja Naqeeb Uddin. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Designed & Built with <FaHeart className="text-cyan-400 text-xs" /> using Next.js & Tailwind CSS
+            Built with Next.js App Router &amp; Tailwind CSS
           </p>
         </div>
       </div>
     </footer>
   );
 }
+
 

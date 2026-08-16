@@ -1,15 +1,15 @@
 
 
 import type { Metadata } from "next";
-import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const outfit = Outfit({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-outfit",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -21,23 +21,24 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Khawaja Naqeeb | Full Stack Developer & AI Specialist",
+  title: "Khawaja Naqeeb Uddin | Full Stack Developer & AI Specialist",
   description:
-    "Portfolio of Khawaja Naqeeb Uddin - Full Stack Web Developer, AI & Cloud Computing Specialist, and Tech Educator.",
+    "Official portfolio of Khawaja Naqeeb Uddin - Full Stack Web Developer, AI & Cloud Specialist (GIAIC), Head of Faculty at Bitcraft, and System Engineer.",
   keywords: [
+    "Khawaja Naqeeb Uddin",
     "Khawaja Naqeeb",
     "Full Stack Developer",
-    "Web Developer Portfolio",
     "Next.js Developer",
     "TypeScript",
-    "AI Enthusiast",
+    "GIAIC AI",
+    "Web Development Faculty",
     "Karachi Developer",
   ],
   authors: [{ name: "Khawaja Naqeeb Uddin" }],
   openGraph: {
-    title: "Khawaja Naqeeb | Full Stack Developer & AI Specialist",
+    title: "Khawaja Naqeeb Uddin | Full Stack Developer & AI Specialist",
     description:
-      "Explore my journey, projects, skills, and experience in web development and artificial intelligence.",
+      "Explore projects, academic credentials, professional experience, and technical expertise in Web Development and AI.",
     type: "website",
   },
 };
@@ -50,13 +51,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.variable} ${plusJakarta.variable} font-sans bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden`}
+        className={`${spaceGrotesk.variable} ${plusJakarta.variable} font-sans bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden min-h-screen flex flex-col justify-between`}
       >
         <Navbar />
-        {children}
+        <main className="flex-grow pt-20">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
+
 
