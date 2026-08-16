@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaLaptopCode, FaBrain, FaAward, FaUserGraduate } from "react-icons/fa";
+import { FaLaptopCode, FaBrain, FaAward, FaUserGraduate, FaRocket } from "react-icons/fa";
+
 
 export default function AboutMe() {
   const stats = [
@@ -73,9 +74,11 @@ export default function AboutMe() {
               , I specialize in crafting modern web solutions with Next.js, React, TypeScript, and Tailwind CSS.
             </p>
 
-            <p className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-inner">
-              My journey combines software development with academic leadership as Head of Faculty for Web Development at Bitcraft. I am passionate about leveraging code to solve real-world problems and build the future of tech. 🚀
+            <p className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-inner flex items-center flex-wrap gap-1.5">
+              <span>My journey combines software development with academic leadership as Head of Faculty for Web Development at Bitcraft. I am passionate about leveraging code to solve real-world problems and build the future of tech.</span>
+              <FaRocket className="text-cyan-400 inline-block text-base animate-pulse" />
             </p>
+
           </div>
 
           {/* Key Metrics Grid */}

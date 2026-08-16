@@ -84,9 +84,11 @@ export default function AboutPage() {
               <h3 className="text-xl font-bold font-heading text-white mb-2 flex items-center gap-2">
                 <FaCode className="text-indigo-400 text-base" /> Vision &amp; Philosophy
               </h3>
-              <p>
-                My journey is driven by curiosity, problem-solving, and a passion for creating impactful digital experiences. Let’s build the future, one line of code at a time. 🚀
+              <p className="flex items-center flex-wrap gap-1.5">
+                <span>My journey is driven by curiosity, problem-solving, and a passion for creating impactful digital experiences. Let’s build the future, one line of code at a time.</span>
+                <FaRocket className="text-cyan-400 inline-block text-base animate-pulse" />
               </p>
+
             </div>
           </div>
         </div>
