@@ -1,49 +1,83 @@
 import { Metadata } from "next";
 import PageTransition from "@/app/components/PageTransition";
-import { FaLaptopCode, FaChalkboardTeacher, FaBriefcase, FaChartLine } from "react-icons/fa";
+import { FaLaptopCode, FaChalkboardTeacher, FaBriefcase, FaChartLine, FaUserTie, FaGlobe } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Professional Experience | Khawaja Naqeeb Uddin",
-  description: "Work history, leadership, and teaching experience of Khawaja Naqeeb Uddin.",
+  description: "Career history of Khawaja Naqeeb Uddin: Administrator at Adamjee Coaching Centre, 30+ Years Educator, Freelance Web Developer, and Corporate Accounts Manager.",
 };
 
 export default function ExperiencePage() {
   const experiences = [
     {
-      title: "Head of Faculty for Web Development",
-      company: "Bitcraft",
+      title: "Administrator & Senior Teacher",
+      company: "Adamjee Coaching Centre",
       period: "Current Role",
       description:
-        "Currently teaching HTML, CSS, JavaScript, and TypeScript while mentoring students to excel in web development.",
-      icon: <FaLaptopCode className="text-cyan-400 text-xl" />,
+        "Serving as Administrator and Senior Teacher, overseeing administrative operations, academic leadership, and senior class instruction.",
+      icon: <FaUserTie className="text-cyan-400 text-xl" />,
       accent: "border-cyan-500/40",
+      tag: "Academic Administration",
+    },
+    {
+      title: "Freelance Full-Stack & AI Developer",
+      company: "Independent Practice",
+      period: "Active",
+      description:
+        "Actively applying full-stack and AI skills to engineer functional, high-performance web applications, client portals, and agentic workflows.",
+      icon: <FaGlobe className="text-indigo-400 text-xl" />,
+      accent: "border-indigo-500/40",
+      tag: "Full-Stack & AI",
+    },
+    {
+      title: "Head of Faculty for Web Development",
+      company: "Bitcraft",
+      period: "Faculty Leadership",
+      description:
+        "Taught HTML, CSS, JavaScript, and TypeScript while mentoring students and leading web development curriculum design.",
+      icon: <FaLaptopCode className="text-emerald-400 text-xl" />,
+      accent: "border-emerald-500/40",
+      tag: "Web Faculty Head",
+    },
+    {
+      title: "Founder & Principal",
+      company: "Own Coaching Center",
+      period: "30-Year Legacy",
+      description:
+        "Owned and administered private coaching center, fostering academic excellence and mentoring thousands of students over three decades.",
+      icon: <FaChalkboardTeacher className="text-purple-400 text-xl" />,
+      accent: "border-purple-500/40",
+      tag: "Educational Entrepreneurship",
     },
     {
       title: "Head of Computer Faculty",
       company: "Falcon Grammar School",
-      period: "Faculty Leadership",
+      period: "Karachi Board Supervision",
       description:
-        "Taught 9th and 10th classes, supervised computer practicals for the Karachi Board, and managed the computer faculty.",
-      icon: <FaChalkboardTeacher className="text-emerald-400 text-xl" />,
-      accent: "border-emerald-500/40",
+        "Supervised 9th & 10th computer classes, conducted Karachi Board practical examinations, and directed computer faculty teachers.",
+      icon: <FaChalkboardTeacher className="text-amber-400 text-xl" />,
+      accent: "border-amber-500/40",
+      tag: "Faculty Supervision",
     },
     {
       title: "Accounts Manager",
       company: "Beyond Borders, Dubai",
-      period: "International Experience",
+      period: "International Corporate",
       description:
-        "Oversaw financial accounts, ensured compliance with international standards, and streamlined operations.",
-      icon: <FaBriefcase className="text-amber-400 text-xl" />,
-      accent: "border-amber-500/40",
+        "Managed financial accounts, ensured international compliance standards, and streamlined corporate fiscal operations.",
+      icon: <FaBriefcase className="text-blue-400 text-xl" />,
+      accent: "border-blue-500/40",
+      tag: "Dubai Financial Operations",
     },
     {
       title: "Accounts Manager",
       company: "Venture Crest Pvt Ltd, DHA Karachi",
-      period: "Corporate Financials",
+      period: "Corporate Accounts",
       description:
-        "Managed accounts, prepared financial reports, and collaborated with internal teams to enhance fiscal policies.",
-      icon: <FaChartLine className="text-purple-400 text-xl" />,
-      accent: "border-purple-500/40",
+        "Oversaw financial management, prepared fiscal statements, and enhanced internal accounting procedures.",
+      icon: <FaChartLine className="text-teal-400 text-xl" />,
+      accent: "border-teal-500/40",
+      tag: "Corporate Fiscal Management",
     },
   ];
 
@@ -53,17 +87,17 @@ export default function ExperiencePage() {
         {/* Header */}
         <div className="text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block">
-            Career Journey
+            Leadership &amp; Professional Career
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-white">
-            Professional <span className="text-gradient-cyan">Experience</span>
+            Work <span className="text-gradient-cyan">Experience</span>
           </h1>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Over the years, I have honed my skills in teaching, account management, and leadership, playing key roles in education and corporate environments.
+            Combining 30 years of teaching dedication, academic administration at Adamjee Coaching Centre, freelance full-stack AI development, and corporate accounts management in Karachi and Dubai.
           </p>
         </div>
 
-        {/* Experience Cards Grid */}
+        {/* Experience Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {experiences.map((exp, idx) => (
             <div
@@ -75,17 +109,22 @@ export default function ExperiencePage() {
                   <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
                     {exp.icon}
                   </div>
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300">
-                    {exp.period}
+                  <span className="text-[11px] font-bold uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300">
+                    {exp.tag}
                   </span>
                 </div>
 
                 <h2 className="text-2xl font-bold text-white font-heading group-hover:text-cyan-400 transition-colors">
                   {exp.title}
                 </h2>
-                <p className="text-cyan-400 font-semibold text-sm mt-1">
-                  {exp.company}
-                </p>
+                <div className="flex items-center justify-between gap-2 mt-1">
+                  <p className="text-cyan-400 font-semibold text-sm">
+                    {exp.company}
+                  </p>
+                  <span className="text-xs font-mono text-slate-400">
+                    {exp.period}
+                  </span>
+                </div>
                 <p className="text-slate-400 text-sm sm:text-base mt-4 font-light leading-relaxed">
                   {exp.description}
                 </p>

@@ -23,11 +23,12 @@ export default function Home() {
   const [roleIndex, setRoleIndex] = useState(0);
 
   const roles = [
-    "Full Stack Web Developer",
-    "AI & Cloud Specialist (GIAIC)",
-    "Head of Computer Faculty",
-    "System & Networking Engineer",
+    "Educator (30+ Years Legacy)",
+    "Administrator @ Adamjee Coaching Centre",
+    "Full Stack & Agentic AI Specialist",
+    "Accounts Management Professional",
   ];
+
 
   useEffect(() => {
     const timer = setInterval(() => {

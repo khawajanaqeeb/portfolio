@@ -2,34 +2,34 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import PageTransition from "@/app/components/PageTransition";
-import { FaLaptopCode, FaUserGraduate, FaAward, FaBrain, FaArrowRight, FaCode, FaRocket } from "react-icons/fa";
+import { FaLaptopCode, FaUserGraduate, FaAward, FaBrain, FaArrowRight, FaCode, FaRocket, FaChalkboardTeacher, FaBuilding, FaRobot } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About Me | Khawaja Naqeeb Uddin",
-  description: "Learn more about Khawaja Naqeeb Uddin, Full Stack Web Developer, AI Specialist, and Computer Faculty Head.",
+  description: "Learn more about Khawaja Naqeeb Uddin, Educator (30+ Years), Administrator at Adamjee Coaching Centre, Full Stack Developer, and GIAIC Agentic AI Engineer.",
 };
 
 export default function AboutPage() {
   const stats = [
     {
-      icon: <FaLaptopCode className="text-cyan-400 text-2xl" />,
+      icon: <FaChalkboardTeacher className="text-cyan-400 text-2xl" />,
+      value: "30+",
+      label: "Years Teaching Experience",
+    },
+    {
+      icon: <FaBrain className="text-indigo-400 text-2xl" />,
+      value: "Top",
+      label: "GIAIC Agentic AI Student",
+    },
+    {
+      icon: <FaRobot className="text-purple-400 text-2xl" />,
+      value: "Q3",
+      label: "Certified Agentic AI",
+    },
+    {
+      icon: <FaLaptopCode className="text-amber-400 text-2xl" />,
       value: "6+",
-      label: "Web Projects Completed",
-    },
-    {
-      icon: <FaUserGraduate className="text-indigo-400 text-2xl" />,
-      value: "100+",
-      label: "Students Mentored",
-    },
-    {
-      icon: <FaAward className="text-amber-400 text-2xl" />,
-      value: "3+",
-      label: "Teaching & Tech Awards",
-    },
-    {
-      icon: <FaBrain className="text-purple-400 text-2xl" />,
-      value: "Q2",
-      label: "GIAIC AI & Cloud Computing",
+      label: "Production & Client Apps",
     },
   ];
 
@@ -39,24 +39,23 @@ export default function AboutPage() {
         {/* Page Header */}
         <div className="text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block">
-            Professional Profile
+            Professional Profile &amp; Legacy
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-white">
             About <span className="text-gradient-cyan">Khawaja Naqeeb Uddin</span>
           </h1>
-
-          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            A versatile Full Stack Developer, Computer Faculty Head, and AI Practitioner committed to crafting impactful digital experiences.
+          <p className="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto font-light leading-relaxed">
+            Educator | Administrator @ Adamjee Coaching Centre | Full Stack Developer | Accounts Management Professional
           </p>
         </div>
 
-        {/* Profile Story Card */}
-        <div className="glass-card glass-card-hover rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* Profile Story Grid */}
+        <div className="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Avatar side */}
           <div className="lg:col-span-4 flex justify-center">
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 rounded-full blur-lg opacity-70 group-hover:opacity-100 transition duration-500" />
-              <div className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full border-4 border-slate-900 bg-slate-900 overflow-hidden shadow-2xl">
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full border-4 border-slate-900 bg-slate-900 overflow-hidden shadow-2xl">
                 <Image
                   src="/naq1.png"
                   alt="Khawaja Naqeeb Uddin"
@@ -69,26 +68,33 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Description text */}
-          <div className="lg:col-span-8 space-y-5 text-slate-300 font-light text-base sm:text-lg leading-relaxed">
-            <div className="p-5 rounded-2xl bg-slate-900/70 border border-slate-800">
+          {/* Detailed Bio Cards */}
+          <div className="lg:col-span-8 space-y-5 text-slate-300 font-light text-base leading-relaxed">
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
               <h3 className="text-xl font-bold font-heading text-white mb-2 flex items-center gap-2">
-                <FaRocket className="text-cyan-400 text-base" /> Full Stack & AI Focus
+                <FaChalkboardTeacher className="text-cyan-400 text-base" /> 30+ Years Teaching Legacy &amp; Leadership
               </h3>
               <p>
-                Hello! I am an aspiring <strong className="text-cyan-300 font-semibold">Full Stack Developer</strong> with a deep interest in <strong className="text-cyan-300 font-semibold">Artificial Intelligence</strong>. I thrive on building innovative solutions and exploring cutting-edge technologies.
+                With <strong className="text-cyan-300 font-semibold">30 years of teaching experience</strong>, I have dedicated my life to shaping young minds and fostering a love for learning. I previously ran my own coaching center and am currently serving as an <strong className="text-cyan-300 font-semibold">Administrator &amp; Senior Teacher at Adamjee Coaching Centre</strong>. Teaching is not just my profession—it is my passion.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-900/70 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
               <h3 className="text-xl font-bold font-heading text-white mb-2 flex items-center gap-2">
-                <FaCode className="text-indigo-400 text-base" /> Vision &amp; Philosophy
+                <FaRobot className="text-indigo-400 text-base" /> Agentic AI &amp; Top Governor House Scholar
               </h3>
-              <p className="flex items-center flex-wrap gap-1.5">
-                <span>My journey is driven by curiosity, problem-solving, and a passion for creating impactful digital experiences. Let’s build the future, one line of code at a time.</span>
-                <FaRocket className="text-cyan-400 inline-block text-base animate-pulse" />
+              <p>
+                Selected as one of the <strong className="text-indigo-300 font-semibold">top students for the Agentic AI Program at Governor House Karachi (GIAIC)</strong>, I have progressed through modern web development (Next.js, TypeScript, Tailwind), <strong className="text-indigo-300 font-semibold">Q3 Certified Agentic AI &amp; Modern Python</strong>, and Q4 Cloud &amp; LLM Orchestration (Docker, Kubernetes, Gemini, Claude Code, SDD).
               </p>
+            </div>
 
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
+              <h3 className="text-xl font-bold font-heading text-white mb-2 flex items-center gap-2">
+                <FaBuilding className="text-purple-400 text-base" /> Accounts Management &amp; Corporate Background
+              </h3>
+              <p>
+                Beyond education and AI, I have gained valuable experience as an <strong className="text-purple-300 font-semibold">Accounts Manager in reputed organizations in Karachi and Dubai</strong>, proving myself as a supportive leader committed to integrity, fiscal policies, and excellence.
+              </p>
             </div>
           </div>
         </div>
@@ -127,12 +133,12 @@ export default function AboutPage() {
           </Link>
 
           <Link
-            href="/education"
+            href="/professional-dev"
             className="glass-card glass-card-hover p-6 rounded-2xl border border-slate-800 flex items-center justify-between group"
           >
             <div>
-              <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Academic Record</p>
-              <h4 className="text-lg font-bold text-white font-heading mt-1">Education History</h4>
+              <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Certifications &amp; AI</p>
+              <h4 className="text-lg font-bold text-white font-heading mt-1">Professional Dev</h4>
             </div>
             <FaArrowRight className="text-slate-400 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
           </Link>
@@ -143,7 +149,7 @@ export default function AboutPage() {
           >
             <div>
               <p className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Live Demos</p>
-              <h4 className="text-lg font-bold text-white font-heading mt-1">Featured Projects</h4>
+              <h4 className="text-lg font-bold text-white font-heading mt-1">GitHub Repositories</h4>
             </div>
             <FaArrowRight className="text-slate-400 group-hover:text-purple-400 group-hover:translate-x-1 transition-all" />
           </Link>

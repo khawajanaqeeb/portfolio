@@ -1,40 +1,76 @@
 import { Metadata } from "next";
 import PageTransition from "@/app/components/PageTransition";
-import { FaCertificate, FaCloud, FaLaptopCode } from "react-icons/fa";
+import { FaCertificate, FaCloud, FaLaptopCode, FaBrain, FaRobot, FaServer } from "react-icons/fa";
+import { SiCisco, SiPython, SiDocker, SiKubernetes } from "react-icons/si";
 
 export const metadata: Metadata = {
-  title: "Professional Development | Khawaja Naqeeb Uddin",
-  description: "Certifications and professional training of Khawaja Naqeeb Uddin.",
+  title: "Professional Development & Certifications | Khawaja Naqeeb Uddin",
+  description: "Certifications, Data Science credentials (Cisco/ITU-DTC), and GIAIC Agentic AI specializations of Khawaja Naqeeb Uddin.",
 };
 
 export default function ProfessionalDevPage() {
   const certifications = [
     {
+      title: "Introduction to Data Science Certified",
+      organization: "Cisco Networking Academy & ITU-DTC Pakistan",
+      period: "Completed: Oct 21, 2025",
+      description:
+        "Successfully completed comprehensive Data Science training covering data analytics, statistical modeling, and foundational machine learning techniques.",
+      icon: <SiCisco className="text-cyan-400 text-2xl" />,
+      accent: "border-cyan-500/40",
+      tag: "Data Science Certification",
+      highlight: true,
+    },
+    {
+      title: "GIAIC Certified - Q3: Agentic AI & Modern Python",
+      organization: "Governor House Karachi (GIAIC)",
+      period: "Q3 Certified",
+      description:
+        "Completed Agentic AI and Modern Python specialization, mastering autonomous AI agent workflows, multi-agent frameworks, and core machine learning logic.",
+      icon: <FaRobot className="text-indigo-400 text-2xl" />,
+      accent: "border-indigo-500/40",
+      tag: "Agentic AI Specialist",
+      highlight: true,
+    },
+    {
+      title: "GIAIC Currently Mastering - Q4: Cloud & LLM Systems",
+      organization: "Governor House Karachi (GIAIC)",
+      period: "Q4 Advanced",
+      description:
+        "Deep-diving into deployment and scaling of AI systems: Cloud & Orchestration (Docker, Kubernetes, FTEs) and Advanced LLMs (Gemini, Claude Code, SDD).",
+      icon: <FaCloud className="text-purple-400 text-2xl" />,
+      accent: "border-purple-500/40",
+      tag: "Cloud & LLM Orchestration",
+    },
+    {
+      title: "GIAIC Certified - Q1 & Q2: Web Architecture",
+      organization: "Governor House Karachi (GIAIC)",
+      period: "Q1 & Q2 Certified",
+      description:
+        "Mastered modern full-stack web development, responsive user interfaces, and server-side rendering using Next.js App Router, TypeScript, and Tailwind CSS.",
+      icon: <FaLaptopCode className="text-emerald-400 text-2xl" />,
+      accent: "border-emerald-500/40",
+      tag: "Full Stack Certification",
+    },
+    {
       title: "MCSE (Microsoft Certified System Engineer)",
       organization: "Microsoft",
+      period: "Professional Certification",
       description:
-        "Advanced training in networking, security, and infrastructure management, strengthening my expertise in system engineering.",
+        "Advanced engineering in computer networking, infrastructure security, active directory, and server system administration.",
       icon: <FaCertificate className="text-amber-400 text-2xl" />,
       accent: "border-amber-500/40",
-      tag: "Professional Certification",
+      tag: "System Engineering",
     },
     {
-      title: "Software Diploma",
+      title: "Software Engineering Diploma",
       organization: "Computer Guide Institute",
+      period: "Diploma Certification",
       description:
-        "Comprehensive training in programming languages and software development methodologies.",
-      icon: <FaLaptopCode className="text-blue-400 text-2xl" />,
+        "Comprehensive diploma program covering programming languages, database design, software development lifecycles, and algorithms.",
+      icon: <FaServer className="text-blue-400 text-2xl" />,
       accent: "border-blue-500/40",
       tag: "Software Engineering",
-    },
-    {
-      title: "GIAIC (Governor Initiative for AI & Cloud Computing)",
-      organization: "Currently Enrolled",
-      description:
-        "Successfully passed Quarter One and progressing through Quarter Two with a strong focus on AI and cloud computing.",
-      icon: <FaCloud className="text-emerald-400 text-2xl" />,
-      accent: "border-emerald-500/40",
-      tag: "AI & Cloud Program",
     },
   ];
 
@@ -44,39 +80,47 @@ export default function ProfessionalDevPage() {
         {/* Header */}
         <div className="text-center space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block">
-            Certifications & Training
+            Specialized Training &amp; Certifications
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-white">
             Professional <span className="text-gradient-cyan">Development</span>
           </h1>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            I continuously expand my knowledge and expertise through certifications and ongoing learning in cutting-edge technologies.
+            Selected as one of the top students for the Agentic AI Program at Governor House Karachi, continuously expanding expertise across Data Science, AI, and Cloud Architecture.
           </p>
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certifications.map((item, idx) => (
             <div
               key={idx}
-              className={`glass-card glass-card-hover rounded-3xl p-8 border ${item.accent} shadow-xl flex flex-col justify-between group`}
+              className={`glass-card glass-card-hover rounded-3xl p-8 border ${item.accent} shadow-xl flex flex-col justify-between group relative overflow-hidden`}
             >
+              {item.highlight && (
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+              )}
               <div>
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
-                  <span className="text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-300">
+                  <span className="text-[10px] font-extrabold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-300">
                     {item.tag}
                   </span>
                 </div>
 
-                <h2 className="text-2xl font-bold text-white font-heading group-hover:text-cyan-400 transition-colors">
+                <h2 className="text-xl font-bold text-white font-heading group-hover:text-cyan-400 transition-colors">
                   {item.title}
                 </h2>
-                <p className="text-cyan-400 font-semibold text-sm mt-1">
-                  {item.organization}
-                </p>
+                <div className="flex items-center justify-between gap-2 mt-1">
+                  <p className="text-cyan-400 font-semibold text-xs">
+                    {item.organization}
+                  </p>
+                  <span className="text-[11px] font-mono text-slate-400">
+                    {item.period}
+                  </span>
+                </div>
                 <p className="text-slate-400 text-sm sm:text-base mt-4 font-light leading-relaxed">
                   {item.description}
                 </p>
