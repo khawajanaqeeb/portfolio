@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaBars, FaTimes, FaRocket } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+
 
 const navRoutes = [
   { name: "Home", href: "/" },
@@ -51,11 +52,11 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group text-2xl font-extrabold tracking-tight"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300">
-            KN
+            KNU
           </div>
           <div className="flex flex-col">
             <span className="text-white group-hover:text-cyan-400 transition-colors duration-300 font-heading text-lg font-bold leading-tight">
-              Khawaja Naqeeb
+              Khawaja Naqeeb Uddin
             </span>
             <span className="text-cyan-400 text-xs font-mono tracking-wider font-semibold">
               Full Stack & AI
@@ -64,7 +65,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Page Router Navigation Links */}
-        <nav className="hidden xl:flex items-center gap-1 bg-slate-900/80 border border-slate-800/90 rounded-full px-3 py-1.5 backdrop-blur-xl">
+        <nav className="hidden xl:flex items-center gap-1 bg-slate-900/80 border border-slate-800/90 rounded-full px-3.5 py-1.5 backdrop-blur-xl">
           {navRoutes.map((route) => {
             const isActive =
               pathname === route.href ||
@@ -91,17 +92,6 @@ export default function Navbar() {
             );
           })}
         </nav>
-
-        {/* Action Button & Quick Contact */}
-        <div className="hidden sm:flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-slate-950 shadow-md shadow-cyan-500/20 hover:shadow-lg hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
-          >
-            <FaRocket className="text-xs" />
-            <span>Hire Me</span>
-          </Link>
-        </div>
 
         {/* Mobile Hamburger Button */}
         <motion.button
@@ -151,19 +141,10 @@ export default function Navbar() {
                 );
               })}
             </ul>
-
-            <div className="pt-6 border-t border-slate-800 mt-6">
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 text-slate-950 shadow-lg shadow-cyan-500/25 text-sm"
-              >
-                <FaRocket /> Get In Touch
-              </Link>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </header>
   );
 }

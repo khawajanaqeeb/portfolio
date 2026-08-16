@@ -151,8 +151,9 @@ export default function ContactPage() {
                       Message Sent Successfully!
                     </h3>
                     <p className="text-slate-300 text-sm font-light">
-                      Thank you for getting in touch. Khawaja Naqeeb will respond promptly.
+                      Thank you for getting in touch. Khawaja Naqeeb Uddin will respond promptly.
                     </p>
+
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">

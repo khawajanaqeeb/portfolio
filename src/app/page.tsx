@@ -139,12 +139,13 @@ export default function Home() {
 
             <div className="space-y-2 text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
               <p>
-                Hi, I am <span className="font-semibold text-cyan-300">Naqeeb</span>. A passionate web developer and tech enthusiast, eager to create impactful digital experiences.
+                Hi, I am <span className="font-semibold text-cyan-300">Khawaja Naqeeb Uddin</span>. A passionate web developer and tech enthusiast, eager to create impactful digital experiences.
               </p>
               <p className="text-slate-400">
                 Explore my journey in technology, development, and AI.
               </p>
             </div>
+
 
             {/* Core Tech Stack */}
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">

@@ -30,23 +30,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .glass-card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
   .glass-card-hover:hover {
+    transform: translateY(-6px) scale(1.015);
     background: rgba(30, 41, 59, 0.75);
-    border-color: rgba(56, 189, 248, 0.35);
-    box-shadow: 0 12px 36px -10px rgba(56, 189, 248, 0.25);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.3);
   }
 
   .glass-header {
-    background: rgba(2, 6, 23, 0.8);
+    background: rgba(2, 6, 23, 0.85);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .text-gradient-cyan {
     background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+    background-size: 200% auto;
+    animation: textShimmer 6s linear infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -77,6 +80,13 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 0 45px rgba(56, 189, 248, 0.35);
   }
 }
+
+@keyframes textShimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

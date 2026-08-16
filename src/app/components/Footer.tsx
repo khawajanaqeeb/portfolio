@@ -16,11 +16,12 @@ export default function Footer() {
               className="flex items-center gap-2.5 group text-2xl font-extrabold tracking-tight"
             >
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-cyan-500/20">
-                KN
+                KNU
               </div>
-              <span className="text-white group-hover:text-cyan-400 transition-colors font-heading">
-                Khawaja Naqeeb
+              <span className="text-white group-hover:text-cyan-400 transition-colors font-heading font-bold">
+                Khawaja Naqeeb Uddin
               </span>
+
             </Link>
             <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
               Full Stack Web Developer, AI & Cloud Specialist (GIAIC), and Head of Computer Faculty dedicated to engineering scalable web architectures.

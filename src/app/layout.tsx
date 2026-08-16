@@ -5,6 +5,7 @@ import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AmbientBackground2026 from "./components/AmbientBackground2026";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -52,15 +53,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.variable} ${plusJakarta.variable} font-sans bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden min-h-screen flex flex-col justify-between`}
+        className={`${outfit.variable} ${plusJakarta.variable} font-sans bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden min-h-screen flex flex-col justify-between relative`}
       >
+        <AmbientBackground2026 />
         <Navbar />
-        <main className="flex-grow pt-20">{children}</main>
+        <main className="flex-grow pt-20 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
+
 
 
 

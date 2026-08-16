@@ -42,8 +42,9 @@ export default function AboutPage() {
             Professional Profile
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold font-heading text-white">
-            About <span className="text-gradient-cyan">Khawaja Naqeeb</span>
+            About <span className="text-gradient-cyan">Khawaja Naqeeb Uddin</span>
           </h1>
+
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             A versatile Full Stack Developer, Computer Faculty Head, and AI Practitioner committed to crafting impactful digital experiences.
           </p>
