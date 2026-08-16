@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import PageTransition from "@/app/components/PageTransition";
-import { FaLaptopCode, FaUserGraduate, FaAward, FaBrain, FaArrowRight, FaCode, FaRocket, FaChalkboardTeacher, FaBuilding, FaRobot } from "react-icons/fa";
+import { FaLaptopCode, FaBrain, FaArrowRight, FaChalkboardTeacher, FaBuilding, FaRobot } from "react-icons/fa";
+
 
 export const metadata: Metadata = {
   title: "About Me | Khawaja Naqeeb Uddin",

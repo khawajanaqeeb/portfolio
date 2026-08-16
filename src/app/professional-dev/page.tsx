@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import PageTransition from "@/app/components/PageTransition";
-import { FaCertificate, FaCloud, FaLaptopCode, FaBrain, FaRobot, FaServer } from "react-icons/fa";
-import { SiCisco, SiPython, SiDocker, SiKubernetes } from "react-icons/si";
+import { FaCertificate, FaCloud, FaLaptopCode, FaRobot, FaServer } from "react-icons/fa";
+import { SiCisco } from "react-icons/si";
+
 
 export const metadata: Metadata = {
   title: "Professional Development & Certifications | Khawaja Naqeeb Uddin",
