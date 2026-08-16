@@ -1,15 +1,15 @@
 
 
 import type { Metadata } from "next";
-import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const spaceGrotesk = Space_Grotesk({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -19,6 +19,7 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
+
 
 export const metadata: Metadata = {
   title: "Khawaja Naqeeb Uddin | Full Stack Developer & AI Specialist",
@@ -51,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${spaceGrotesk.variable} ${plusJakarta.variable} font-sans bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden min-h-screen flex flex-col justify-between`}
+        className={`${outfit.variable} ${plusJakarta.variable} font-sans bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden min-h-screen flex flex-col justify-between`}
       >
         <Navbar />
         <main className="flex-grow pt-20">{children}</main>
@@ -60,5 +61,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
