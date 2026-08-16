@@ -4,19 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight, FaExpand, FaTimes, FaPlayCircle } from "react-icons/fa";
 
+const cdnBase = "https://egpdxaviimyirpbafgpt.supabase.co/storage/v1/object/public/gallery";
+
 const galleryItems = [
-  { src: "/g1.jpeg", alt: "Academic Excellence Award Ceremony", caption: "Sindh Teacher Appreciation Award Ceremony" },
-  { src: "/g2.jpg", alt: "Faculty Group Presentation", caption: "Computer Science Faculty & Seminar" },
-  { src: "/g3.jpg", alt: "Lab Demonstration", caption: "Practical Computer Science Training Session" },
-  { src: "/g4.jpg", alt: "Award Presentation", caption: "Receiving Best Teacher Honor" },
-  { src: "/g6.jpeg", alt: "GIAIC Classroom Event", caption: "GIAIC Tech & AI Community Event" },
-  { src: "/g7.jpeg", alt: "Mentorship Session", caption: "Student Web Dev Mentorship Workshop" },
-  { src: "/g8.jpeg", alt: "Tech Certification Event", caption: "Computer Science Certification Ceremony" },
+  { src: `${cdnBase}/g1.jpeg`, alt: "Academic Excellence Award Ceremony", caption: "Sindh Teacher Appreciation Award Ceremony" },
+  { src: `${cdnBase}/g2.jpg`, alt: "Faculty Group Presentation", caption: "Computer Science Faculty & Seminar" },
+  { src: `${cdnBase}/g3.jpg`, alt: "Lab Demonstration", caption: "Practical Computer Science Training Session" },
+  { src: `${cdnBase}/g4.jpg`, alt: "Award Presentation", caption: "Receiving Best Teacher Honor" },
+  { src: `${cdnBase}/g6.jpeg`, alt: "GIAIC Classroom Event", caption: "GIAIC Tech & AI Community Event" },
+  { src: `${cdnBase}/g7.jpeg`, alt: "Mentorship Session", caption: "Student Web Dev Mentorship Workshop" },
+  { src: `${cdnBase}/g8.jpeg`, alt: "Tech Certification Event", caption: "Computer Science Certification Ceremony" },
 ];
 
 const videoItems = [
-  { src: "/v1.mp4", title: "Award Ceremony Highlights", desc: "Honored with Best Computer Teacher Award" },
-  { src: "/v2.mp4", title: "Website Platform Walkthrough", desc: "Demonstrating full-stack project features" },
+  { src: `${cdnBase}/v1.mp4`, title: "Award Ceremony Highlights", desc: "Honored with Best Computer Teacher Award" },
+  { src: `${cdnBase}/v2.mp4`, title: "Website Platform Walkthrough", desc: "Demonstrating full-stack project features" },
 ];
 
 export default function Gallery() {
@@ -40,139 +42,133 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-16 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto scroll-mt-24">
-      {/* Title */}
-      <div className="text-center mb-12">
-        <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-full inline-block mb-3">
-          Moments & Media
+    <section id="gallery" className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto space-y-16">
+      {/* Section Header */}
+      <div className="text-center space-y-4">
+        <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block">
+          Media Highlights
         </span>
-        <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white tracking-tight">
-          Photo & Video <span className="text-gradient-cyan">Gallery</span>
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-heading text-white">
+          Event <span className="text-gradient-cyan">Gallery</span>
         </h2>
-        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-3 font-light">
-          A visual journey capturing awards, educational workshops, student mentorship, and live demonstrations.
+        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-light">
+          A visual record of academic achievements, student mentorship, award ceremonies, and interactive project demonstrations.
         </p>
       </div>
 
-      {/* Main Image Slider */}
-      <div className="relative max-w-4xl mx-auto glass-card rounded-3xl p-4 border border-slate-800 shadow-2xl overflow-hidden group">
-        <div className="relative h-[320px] sm:h-[450px] w-full rounded-2xl overflow-hidden bg-slate-950">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-full h-full cursor-pointer"
-            onClick={() => setSelectedImage(galleryItems[currentIndex])}
-          >
-            <Image
-              src={galleryItems[currentIndex].src}
-              alt={galleryItems[currentIndex].alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 896px"
-              className="object-contain rounded-2xl"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-              <div className="flex items-center justify-between w-full">
-                <div>
-                  <p className="text-white font-bold text-lg font-outfit">
-                    {galleryItems[currentIndex].alt}
-                  </p>
-                  <p className="text-cyan-400 text-xs sm:text-sm font-light">
-                    {galleryItems[currentIndex].caption}
-                  </p>
-                </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedImage(galleryItems[currentIndex]);
-                  }}
-                  className="p-3 rounded-xl bg-slate-900/90 border border-slate-700 text-cyan-400 hover:scale-110 transition-transform"
-                  aria-label="Expand image"
-                >
-                  <FaExpand />
-                </button>
+      {/* Main Carousel Showcase */}
+      <div className="relative glass-card rounded-3xl p-4 sm:p-8 border border-slate-800 shadow-2xl overflow-hidden">
+        <div className="relative h-[320px] sm:h-[450px] md:h-[520px] rounded-2xl overflow-hidden bg-slate-950">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={galleryItems[currentIndex].src}
+                alt={galleryItems[currentIndex].alt}
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-contain"
+                priority
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-6 sm:p-10">
+                <p className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1">
+                  Photo {currentIndex + 1} of {galleryItems.length}
+                </p>
+                <h3 className="text-xl sm:text-3xl font-extrabold text-white font-heading">
+                  {galleryItems[currentIndex].caption}
+                </h3>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Slider Arrow Controls */}
+          {/* Navigation Controls */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-950/80 border border-slate-800 text-white hover:text-cyan-400 hover:scale-110 transition-all opacity-80 group-hover:opacity-100"
-            aria-label="Previous slide"
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/80 border border-slate-700 text-white hover:text-cyan-400 hover:border-cyan-500 transition-all shadow-lg backdrop-blur-md"
+            aria-label="Previous Slide"
           >
-            <FaChevronLeft />
+            <FaChevronLeft className="text-lg" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-950/80 border border-slate-800 text-white hover:text-cyan-400 hover:scale-110 transition-all opacity-80 group-hover:opacity-100"
-            aria-label="Next slide"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/80 border border-slate-700 text-white hover:text-cyan-400 hover:border-cyan-500 transition-all shadow-lg backdrop-blur-md"
+            aria-label="Next Slide"
           >
-            <FaChevronRight />
+            <FaChevronRight className="text-lg" />
           </button>
         </div>
 
-        {/* Indicator Dots */}
-        <div className="flex justify-center items-center gap-2 mt-4 pb-2">
-          {galleryItems.map((_, idx) => (
+        {/* Thumbnail Indicator Strip */}
+        <div className="flex justify-center gap-2 mt-6 overflow-x-auto py-2">
+          {galleryItems.map((item, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                currentIndex === idx
-                  ? "w-8 bg-cyan-400"
-                  : "w-2.5 bg-slate-700 hover:bg-slate-500"
+              className={`relative w-16 h-12 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${
+                idx === currentIndex
+                  ? "border-cyan-400 scale-105 shadow-md shadow-cyan-500/30"
+                  : "border-slate-800 opacity-50 hover:opacity-100"
               }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                sizes="64px"
+                className="object-cover"
+                unoptimized
+              />
+            </button>
           ))}
         </div>
       </div>
 
-      {/* Video Showcase Section */}
-      <div className="mt-16">
-        <h3 className="text-2xl font-bold font-outfit text-white mb-6 text-center sm:text-left flex items-center gap-2">
-          <FaPlayCircle className="text-cyan-400" />
-          <span>Featured Video Demonstrations</span>
-        </h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {videoItems.map((video, idx) => (
-            <motion.div
-              key={idx}
-              className="glass-card rounded-3xl p-4 border border-slate-800 shadow-xl overflow-hidden flex flex-col justify-between"
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-            >
-              <div className="relative w-full h-[240px] sm:h-[300px] rounded-2xl overflow-hidden bg-slate-950">
-                <video
-                  src={video.src}
-                  controls
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              <div className="pt-4 px-2">
-                <h4 className="text-lg font-bold text-white font-outfit">
+      {/* Video Demonstration Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+        {videoItems.map((video, idx) => (
+          <div
+            key={idx}
+            className="glass-card rounded-3xl p-6 border border-slate-800 shadow-xl space-y-4 relative overflow-hidden group"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
+                  Video Feature
+                </span>
+                <h4 className="text-xl font-bold text-white font-heading mt-1">
                   {video.title}
                 </h4>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1 font-light">
+                <p className="text-slate-400 text-xs mt-1 font-light">
                   {video.desc}
                 </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <FaPlayCircle className="text-cyan-400 text-3xl group-hover:scale-110 transition-transform" />
+            </div>
+
+            <div className="relative w-full h-64 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800">
+              <video
+                src={video.src}
+                controls
+                preload="metadata"
+                className="w-full h-full object-contain bg-black"
+              />
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-10"
+            className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -181,32 +177,26 @@ export default function Gallery() {
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute top-6 right-6 p-3 rounded-full bg-slate-900 border border-slate-700 text-white hover:text-cyan-400 text-xl"
-              aria-label="Close modal"
             >
               <FaTimes />
             </button>
-
             <div
-              className="relative max-w-5xl max-h-[85vh] w-full h-full flex flex-col items-center justify-center"
+              className="relative max-w-4xl w-full h-[80vh] flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-full max-h-[75vh]">
+              <div className="relative w-full h-full">
                 <Image
                   src={selectedImage.src}
                   alt={selectedImage.alt}
                   fill
                   sizes="100vw"
                   className="object-contain rounded-2xl"
+                  unoptimized
                 />
               </div>
-              <div className="mt-4 text-center">
-                <h4 className="text-xl font-bold text-white font-outfit">
-                  {selectedImage.alt}
-                </h4>
-                <p className="text-cyan-400 text-sm mt-1 font-light">
-                  {selectedImage.caption}
-                </p>
-              </div>
+              <p className="text-center text-slate-200 font-heading font-bold text-lg mt-4">
+                {selectedImage.caption}
+              </p>
             </div>
           </motion.div>
         )}
@@ -214,4 +204,3 @@ export default function Gallery() {
     </section>
   );
 }
-
