@@ -1,67 +1,91 @@
 "use client";
 import { motion } from "framer-motion";
+import { FaGraduationCap, FaUniversity, FaBook, FaSchool } from "react-icons/fa";
 
 export default function Education() {
-  return (
-    <section
-      id="education"
-      className="py-16 px-6 sm:px-12 lg:px-20 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-500"
-    >
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <h2 className="text-4xl font-bold text-blue-400 mb-6 hover:scale-105 transition-all duration-300">
-          Education
-        </h2>
-        <p className="text-lg text-gray-300 leading-relaxed mb-8 hover:text-gray-100 transition-all duration-300">
-          My academic journey has shaped my understanding of diverse subjects
-          and has provided me with a solid foundation for growth.
-        </p>
-      </motion.div>
+  const educations = [
+    {
+      title: "Masters in Economics",
+      institution: "University of Karachi",
+      description: "Specialization in Economic Analysis, Financial Systems, and Quantitative Policy.",
+      icon: <FaUniversity className="text-cyan-400" />,
+      tag: "Postgraduate",
+    },
+    {
+      title: "Graduation in Commerce (B.Com)",
+      institution: "University of Karachi",
+      description: "Focused on Business Economics, Accounting, Financial Principles, and Management.",
+      icon: <FaGraduationCap className="text-indigo-400" />,
+      tag: "Bachelor Degree",
+    },
+    {
+      title: "Intermediate in Science (Pre-Engineering)",
+      institution: "Karachi Board",
+      description: "Advanced studies in Higher Mathematics, Physics, and Chemistry.",
+      icon: <FaBook className="text-purple-400" />,
+      tag: "HSC",
+    },
+    {
+      title: "Matriculation in Science",
+      institution: "Karachi Board",
+      description: "Foundational sciences with high distinction in Mathematics and Computer Science.",
+      icon: <FaSchool className="text-emerald-400" />,
+      tag: "SSC",
+    },
+  ];
 
-      {/* Education List */}
-      <motion.div
-        className="max-w-4xl mx-auto space-y-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-      >
-        {[
-          {
-            title: "Masters in Economics",
-            institution: "University of Karachi",
-            description: "Specialization in Economic Analysis and Policy",
-          },
-          {
-            title: "Graduation in Commerce",
-            institution: "University of Karachi",
-            description: "Focused on Business and Financial Principles",
-          },
-          {
-            title: "Intermediate in Science",
-            institution: "Karachi",
-            description: "Pre-Engineering",
-          },
-          {
-            title: "Matriculation in Science",
-            institution: "Karachi Board",
-            description: "Majors: Maths, Chemistry, Physics",
-          },
-        ].map((edu, index) => (
+  return (
+    <section id="education" className="py-16 px-6 sm:px-12 lg:px-20 max-w-6xl mx-auto scroll-mt-24">
+      <div className="text-center mb-16">
+        <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-full inline-block mb-3">
+          Academic Background
+        </span>
+        <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white tracking-tight">
+          Education <span className="text-gradient-cyan">History</span>
+        </h2>
+        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-3 font-light">
+          A solid academic foundation in economics, commerce, and analytical sciences powering technical problem solving.
+        </p>
+      </div>
+
+      {/* Timeline Tree Container */}
+      <div className="relative border-l-2 border-slate-800 ml-4 sm:ml-32 space-y-12">
+        {educations.map((edu, idx) => (
           <motion.div
-            key={index}
-            className="bg-gray-800 shadow-lg rounded-lg p-6 border border-gray-400 hover:shadow-xl transition-all duration-300"
-            whileHover={{ scale: 1.03 }}
+            key={idx}
+            className="relative pl-8 sm:pl-10 group"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: idx * 0.15 }}
           >
-            <h3 className="text-2xl font-semibold text-blue-400">{edu.title}</h3>
-            <p className="text-gray-300 mt-2">{edu.institution}</p>
-            <p className="text-gray-400 mt-1">{edu.description}</p>
+            {/* Timeline Node Point */}
+            <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-cyan-500/60 flex items-center justify-center text-sm shadow-md shadow-cyan-500/20 group-hover:scale-125 group-hover:border-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
+              {edu.icon}
+            </div>
+
+            {/* Content Card */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-xl">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span className="text-xs font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-cyan-300">
+                  {edu.tag}
+                </span>
+                <span className="text-sm font-medium text-slate-400">
+                  {edu.institution}
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-bold text-white font-outfit group-hover:text-cyan-400 transition-colors">
+                {edu.title}
+              </h3>
+              <p className="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+                {edu.description}
+              </p>
+            </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
+

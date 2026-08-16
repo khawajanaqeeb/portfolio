@@ -1,73 +1,80 @@
 "use client";
 import { motion } from "framer-motion";
+import { FaTrophy, FaMedal, FaStar } from "react-icons/fa";
 
 export default function Awards() {
-  return (
-    <section
-      id="awards"
-      className="py-16 px-6 sm:px-12 lg:px-20 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white"
-    >
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <h2 className="text-4xl font-bold text-blue-600 mb-6 hover:scale-105 transition-all duration-300">
-          Awards & Honors
-        </h2>
-        <p className="text-lg text-gray-300 leading-relaxed hover:text-white transition-all duration-300">
-          I am proud to share my achievements, which reflect my dedication and
-          commitment to learning and growth.
-        </p>
-      </motion.div>
+  const awards = [
+    {
+      title: "Completed Quarter 1 - GIAIC AI Initiative",
+      description:
+        "Equipped with foundational mastery in TypeScript, Next.js 14, and Artificial Intelligence paradigms under the Sindh Governor Initiative.",
+      icon: <FaStar className="text-amber-400 text-2xl" />,
+      tag: "AI & Cloud Certification",
+      accent: "border-amber-500/40",
+    },
+    {
+      title: "Excellence in Computer Teaching Award",
+      description:
+        "Awarded for outstanding instruction and student success rate for 9th & 10th matric computer science practical examinations.",
+      icon: <FaTrophy className="text-cyan-400 text-2xl" />,
+      tag: "Faculty Distinction",
+      accent: "border-cyan-500/40",
+    },
+    {
+      title: "Best Teacher Award (All Sindh Appreciation 2021)",
+      description:
+        "Recognized at the prestigious All Sindh Teachers Appreciation Award Ceremony for exceptional teaching in Mathematics & Computer Science.",
+      icon: <FaMedal className="text-purple-400 text-2xl" />,
+      tag: "Provincial Recognition",
+      accent: "border-purple-500/40",
+    },
+  ];
 
-      {/* Awards List */}
-      <motion.div
-        className="max-w-4xl mx-auto mt-8 space-y-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-      >
-        {[
-          {
-            title: "Successfully Completed Quarter One of GIAIC",
-            description:
-              "Global AI and Cloud Computing Initiative (GIAIC) is a renowned program focusing on AI and Cloud Computing. Completing Quarter One equipped me with foundational knowledge and hands-on experience.",
-            color: "border-yellow-400",
-          },
-          {
-            title: "Excellence in Computer Teaching",
-            description:
-              "Awarded for outstanding performance as computer teacher for class 9th and 10th , got best teacher award which truly shows my computer trainer skills.",
-            color: "border-green-400",
-          },
-          {
-            title: "Best Teacher Award",
-            description:
-              "Received Best Mathamatics and Computer Teacher form All Sindh Teachers Appreciation Award Ceremony 2021",
-            color: "border-blue-400",
-          },
-        ].map((award, index) => (
+  return (
+    <section id="awards" className="py-16 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto scroll-mt-24">
+      <div className="text-center mb-16">
+        <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-full inline-block mb-3">
+          Honors & Recognitions
+        </span>
+        <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white tracking-tight">
+          Awards & <span className="text-gradient-gold">Achievements</span>
+        </h2>
+        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-3 font-light">
+          Milestones reflecting dedication to teaching excellence, software engineering, and continuous learning.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {awards.map((award, idx) => (
           <motion.div
-            key={index}
-            className={`bg-gray-700 shadow-lg rounded-lg p-6 border ${award.color} hover:shadow-2xl transition-all duration-300`}
-            whileHover={{ scale: 1.03 }}
+            key={idx}
+            className={`glass-card glass-card-hover rounded-3xl p-8 border ${award.accent} flex flex-col justify-between shadow-xl group relative overflow-hidden`}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: idx * 0.15 }}
           >
-            <h3 className="text-2xl font-semibold text-white">{award.title}</h3>
-            <p className="text-gray-300 mt-2">{award.description}</p>
+            <div>
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                  {award.icon}
+                </div>
+                <span className="text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-300">
+                  {award.tag}
+                </span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white font-outfit group-hover:text-amber-300 transition-colors">
+                {award.title}
+              </h3>
+              <p className="text-slate-400 text-sm mt-3 leading-relaxed font-light">
+                {award.description}
+              </p>
+            </div>
           </motion.div>
         ))}
-      </motion.div>
-
-      <motion.p
-        className="text-sm text-gray-400 mt-8 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-      >
-        These milestones are stepping stones toward a promising future in technology and innovation.
-      </motion.p>
+      </div>
     </section>
   );
 }
+

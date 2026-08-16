@@ -1,46 +1,173 @@
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiNextdotjs,
+} from "react-icons/si";
+import { FaNetworkWired } from "react-icons/fa";
 
-const skills = [
-  { name: "Computer Networking", level: 80, image: "/networking.jpg", description: "Managing and configuring networks to ensure smooth communication between computers in an organization." },
-  { name: "HTML", level: 90, image: "/html.jfif", description: "Experienced in building web structures with HTML, creating semantic and accessible web pages." },
-  { name: "CSS", level: 85, image: "/css.png", description: "Knowledgeable in styling web pages, making them visually appealing, responsive, and user-friendly." },
-  { name: "JavaScript", level: 75, image: "/java.png", description: "Experience in adding interactivity and logic to web pages using JavaScript." },
-  { name: "TypeScript", level: 70, image: "/ts.jpg", description: "Learning TypeScript to add type safety and enhance JavaScript projects." },
-];
+
 
 export default function Skills() {
+  const [filter, setFilter] = useState("all");
+
+  const skills = [
+    {
+      name: "HTML5",
+      category: "web",
+      level: 90,
+      image: "/html.jfif",
+      icon: <SiHtml5 className="text-orange-500 text-3xl" />,
+      description: "Semantic markup, accessibility standard compliance, and structured web layouts.",
+    },
+    {
+      name: "CSS3 & Styling",
+      category: "web",
+      level: 85,
+      image: "/css.png",
+      icon: <SiCss3 className="text-blue-500 text-3xl" />,
+      description: "Responsive layouts, Flexbox/Grid, keyframe animations, and Tailwind CSS design systems.",
+    },
+    {
+      name: "JavaScript (ES6+)",
+      category: "programming",
+      level: 85,
+      image: "/java.png",
+      icon: <SiJavascript className="text-yellow-400 text-3xl" />,
+      description: "Asynchronous programming, DOM manipulation, ES6+ syntax, and functional logic.",
+    },
+    {
+      name: "TypeScript",
+      category: "programming",
+      level: 80,
+      image: "/ts.jpg",
+      icon: <SiTypescript className="text-blue-400 text-3xl" />,
+      description: "Strong typing, interface definitions, generic types, and compile-time bug prevention.",
+    },
+    {
+      name: "React & Next.js",
+      category: "web",
+      level: 85,
+      icon: <SiNextdotjs className="text-white text-3xl" />,
+      description: "App Router architecture, Server Components, SSR, static generation, and custom hooks.",
+    },
+    {
+      name: "Computer Networking",
+      category: "networking",
+      level: 80,
+      image: "/networking.jpg",
+      icon: <FaNetworkWired className="text-cyan-400 text-3xl" />,
+      description: "Network configuration, IP subnets, LAN/WAN architecture, TCP/IP, and MCSE standards.",
+    },
+  ];
+
+  const filteredSkills =
+    filter === "all" ? skills : skills.filter((s) => s.category === filter);
+
   return (
-    <section id="skills" className="py-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-6 text-indigo-400 animate-fadeIn">My Skills</h2>
-        <p className="text-lg text-gray-300 text-center leading-relaxed mb-8">
-          I have gained expertise in various fields, including computer networking and web development technologies.
+    <section id="skills" className="py-16 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto scroll-mt-24">
+      <div className="text-center mb-12">
+        <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-full inline-block mb-3">
+          Technical Stack
+        </span>
+        <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white tracking-tight">
+          Skills & <span className="text-gradient-cyan">Proficiency</span>
+        </h2>
+        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mt-3 font-light">
+          A blend of modern web development frameworks, systems engineering, and network architecture.
         </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="bg-gray-800 shadow-lg rounded-lg p-6 border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
-            >
-              <div className="flex items-center mb-4">
-                <Image src={skill.image} alt={skill.name} width={48} height={48} className="rounded-md" />
-                <h3 className="text-2xl font-semibold text-indigo-300 ml-4">{skill.name}</h3>
-              </div>
-              <p className="text-gray-400 mb-4">{skill.description}</p>
-
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-700 rounded-full h-2.5 mb-2 overflow-hidden">
-                <div
-                  className="bg-indigo-400 h-2.5 rounded-full transition-all duration-700 ease-in-out"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-              <p className="text-gray-400 text-sm">{skill.level}% Expertise</p>
-            </div>
-          ))}
-        </div>
       </div>
+
+      {/* Filter Tabs */}
+      <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+        {[
+          { id: "all", label: "All Skills" },
+          { id: "web", label: "Web Development" },
+          { id: "programming", label: "Languages" },
+          { id: "networking", label: "Systems & Networks" },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setFilter(tab.id)}
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              filter === tab.id
+                ? "bg-gradient-to-r from-cyan-500 to-indigo-600 text-slate-950 shadow-md shadow-cyan-500/25"
+                : "bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Skills Grid */}
+      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <AnimatePresence>
+          {filteredSkills.map((skill, idx) => (
+            <motion.div
+              key={skill.name}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              className="glass-card glass-card-hover rounded-3xl p-6 border border-slate-800 shadow-xl flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  {skill.image ? (
+                    <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-slate-800 flex-shrink-0">
+                      <Image
+                        src={skill.image}
+                        alt={skill.name}
+                        fill
+                        sizes="48px"
+                        className="object-cover group-hover:scale-110 transition-transform"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center flex-shrink-0">
+                      {skill.icon}
+                    </div>
+                  )}
+
+                  <div>
+                    <h3 className="text-xl font-bold text-white font-outfit group-hover:text-cyan-400 transition-colors">
+                      {skill.name}
+                    </h3>
+                    <span className="text-xs font-semibold text-slate-400">
+                      {skill.level}% Mastery
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed font-light">
+                  {skill.description}
+                </p>
+              </div>
+
+              {/* Animated Progress Bar */}
+              <div>
+                <div className="w-full bg-slate-900 border border-slate-800 rounded-full h-2.5 overflow-hidden">
+                  <motion.div
+                    className="bg-gradient-to-r from-cyan-400 to-indigo-500 h-2.5 rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 }
+
