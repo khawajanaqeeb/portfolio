@@ -39,15 +39,29 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+        isOpen
+          ? "h-screen bg-slate-950/95 backdrop-blur-2xl flex flex-col"
+          : scrolled
           ? "glass-header py-3 shadow-xl shadow-cyan-950/20"
           : "bg-slate-950/70 backdrop-blur-md border-b border-white/5 py-4"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-8 lg:px-12 flex justify-between items-center">
+      <div className={`container mx-auto px-4 sm:px-8 lg:px-12 flex justify-between items-center flex-shrink-0 ${isOpen ? "py-4 border-b border-slate-800/80" : ""}`}>
         {/* Brand Logo */}
         <Link
           href="/"
@@ -110,13 +124,13 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 top-[72px] z-40 bg-slate-950/95 backdrop-blur-2xl flex flex-col justify-between p-6 border-t border-slate-800 xl:hidden overflow-y-auto"
-            initial={{ opacity: 0, y: -20 }}
+            className="flex-1 overflow-y-auto p-4 sm:p-6 xl:hidden"
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
           >
-            <ul className="flex flex-col space-y-2">
+            <ul className="flex flex-col space-y-1.5 pb-8">
               {navRoutes.map((route, index) => {
                 const isActive =
                   pathname === route.href ||
@@ -124,16 +138,16 @@ export default function Navbar() {
                 return (
                   <motion.li
                     key={route.name}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -15 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.04 }}
+                    transition={{ delay: index * 0.03 }}
                   >
                     <Link
                       href={route.href}
                       onClick={() => setIsOpen(false)}
                       className={`block text-base font-semibold py-3 px-4 rounded-xl transition-all duration-300 ${
                         isActive
-                          ? "bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-400 border border-cyan-500/30"
+                          ? "bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-400 border border-cyan-500/30 shadow-md shadow-cyan-950/30"
                           : "text-slate-300 hover:text-white hover:bg-slate-900"
                       }`}
                     >
@@ -146,7 +160,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </header>
   );
 }
