@@ -52,7 +52,7 @@ export default function AwardsPage() {
         </div>
 
         {/* Awards Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {awards.map((award, idx) => (
             <div
               key={idx}

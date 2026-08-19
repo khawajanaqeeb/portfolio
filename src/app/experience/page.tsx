@@ -149,7 +149,7 @@ export default function ExperiencePage() {
                 <p className="text-cyan-400 font-semibold text-sm mt-1">
                   {exp.company}
                 </p>
-                <div className="flex flex-wrap items-center justify-between gap-2 mt-2 text-xs font-mono text-slate-400 border-b border-slate-800/80 pb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 mt-2 text-xs font-mono text-slate-400 border-b border-slate-800/80 pb-3">
                   <span>{exp.location}</span>
                   <span className="text-indigo-300 bg-slate-900 px-2.5 py-0.5 rounded-full border border-slate-800">
                     {exp.period}

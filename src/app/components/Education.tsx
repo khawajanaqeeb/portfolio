@@ -49,7 +49,7 @@ export default function Education() {
       </div>
 
       {/* Timeline Tree Container */}
-      <div className="relative border-l-2 border-slate-800 ml-4 sm:ml-32 space-y-12">
+      <div className="relative border-l-2 border-slate-800 ml-4 sm:ml-8 lg:ml-28 space-y-12">
         {educations.map((edu, idx) => (
           <motion.div
             key={idx}

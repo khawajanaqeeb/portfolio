@@ -83,11 +83,11 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 min-w-0 flex-1">
                 <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center flex-shrink-0">
                   {item.icon}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {item.label}
                   </p>
@@ -95,7 +95,7 @@ export default function Contact() {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-slate-100 hover:text-cyan-400 font-bold text-base transition-colors"
+                    className="text-slate-100 hover:text-cyan-400 font-bold text-sm sm:text-base transition-colors truncate block"
                   >
                     {item.value}
                   </a>

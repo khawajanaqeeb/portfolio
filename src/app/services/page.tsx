@@ -145,7 +145,7 @@ export default function ServicesPage() {
                   <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
                     {service.icon}
                   </div>
-                  <span className="text-[10px] font-extrabold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-300">
+                  <span className="text-[11px] font-extrabold tracking-wide uppercase px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-300">
                     {service.category}
                   </span>
                 </div>

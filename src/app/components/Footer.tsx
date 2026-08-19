@@ -8,12 +8,12 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950/90 border-t border-slate-800/80 pt-16 pb-8 text-slate-400 font-light relative">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10 pb-12 border-b border-slate-800/80">
           {/* Brand Col */}
-          <div className="md:col-span-5 space-y-4">
+          <div className="md:col-span-5 space-y-4 text-center md:text-left">
             <Link
               href="/"
-              className="flex items-center gap-2.5 group text-2xl font-extrabold tracking-tight"
+              className="flex items-center justify-center md:justify-start gap-2.5 group text-2xl font-extrabold tracking-tight"
             >
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-cyan-500/20">
                 KNU
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Navigation Links */}
-          <div className="md:col-span-4 space-y-3">
+          <div className="md:col-span-4 space-y-3 text-center md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-heading">
               Page Routes
             </h4>
@@ -64,11 +64,11 @@ export default function Footer() {
           </div>
 
           {/* Social Profiles & Contact Callout */}
-          <div className="md:col-span-3 space-y-4">
+          <div className="md:col-span-3 space-y-4 text-center md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-heading">
               Connect With Me
             </h4>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center md:justify-start gap-3">
               {[
                 {
                   href: "https://www.linkedin.com/in/khawaja-naqeeb-uddin-75203a143/",

@@ -82,7 +82,7 @@ export default function EducationPage() {
         </div>
 
         {/* Education Timeline */}
-        <div className="relative border-l-2 border-slate-800 ml-4 sm:ml-28 space-y-10">
+        <div className="relative border-l-2 border-slate-800 ml-4 sm:ml-8 lg:ml-28 space-y-10">
           {educations.map((edu, idx) => (
             <div key={idx} className="relative pl-8 sm:pl-10 group">
               {/* Node Icon */}

@@ -51,16 +51,16 @@ export default function Navbar() {
         {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group text-2xl font-extrabold tracking-tight"
+          className="flex items-center gap-2 sm:gap-2.5 group text-2xl font-extrabold tracking-tight min-w-0"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 flex items-center justify-center text-slate-950 font-black text-xs sm:text-base shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
             KNU
           </div>
-          <div className="flex flex-col">
-            <span className="text-white group-hover:text-cyan-400 transition-colors duration-300 font-heading text-lg font-bold leading-tight">
+          <div className="flex flex-col min-w-0">
+            <span className="text-white group-hover:text-cyan-400 transition-colors duration-300 font-heading text-base sm:text-lg font-bold leading-tight truncate">
               Khawaja Naqeeb Uddin
             </span>
-            <span className="text-cyan-400 text-xs font-mono tracking-wider font-semibold">
+            <span className="text-cyan-400 text-[10px] sm:text-xs font-mono tracking-wider font-semibold hidden xs:inline">
               Full Stack & AI
             </span>
           </div>

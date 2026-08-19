@@ -7,6 +7,10 @@
   --font-body: var(--font-plus-jakarta), sans-serif;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-body);
   background-color: #020617;
@@ -78,6 +82,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .glow-cyan-lg {
     box-shadow: 0 0 45px rgba(56, 189, 248, 0.35);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

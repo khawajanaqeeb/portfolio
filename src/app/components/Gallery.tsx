@@ -106,7 +106,7 @@ export default function Gallery() {
         </div>
 
         {/* Thumbnail Indicator Strip */}
-        <div className="flex justify-center gap-2 mt-6 overflow-x-auto py-2">
+        <div className="flex justify-center gap-2 mt-6 overflow-x-auto py-2 scrollbar-hide">
           {galleryItems.map((item, idx) => (
             <button
               key={idx}

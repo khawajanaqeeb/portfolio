@@ -82,11 +82,11 @@ export default function ContactPage() {
                 key={idx}
                 className={`glass-card glass-card-hover rounded-3xl p-6 border ${contact.accent} shadow-xl flex items-center justify-between group`}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 min-w-0 flex-1">
                   <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center flex-shrink-0">
                     {contact.icon}
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                       {contact.label}
                     </p>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                       href={contact.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-white hover:text-cyan-400 font-bold text-base transition-colors font-heading"
+                      className="text-white hover:text-cyan-400 font-bold text-sm sm:text-base transition-colors font-heading truncate block"
                     >
                       {contact.value}
                     </a>
