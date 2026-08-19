@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight, FaExpand, FaTimes, FaPlayCircle } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaTimes, FaPlayCircle } from "react-icons/fa";
 
 const cdnBase = "https://egpdxaviimyirpbafgpt.supabase.co/storage/v1/object/public/gallery";
 
